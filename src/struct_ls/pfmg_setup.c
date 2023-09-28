@@ -766,7 +766,7 @@ hypre_PFMGComputeDxyz( hypre_StructMatrix *A,
    hypre_BoxArray        *compute_boxes;
    HYPRE_Real             cxyz[3], sqcxyz[3], tcxyz[3];
    HYPRE_Real             cxyz_max;
-   HYPRE_Int              tot_size;
+   HYPRE_BigInt           tot_size;
    hypre_StructStencil   *stencil;
    //hypre_Index           *stencil_shape;
    HYPRE_Int              stencil_size;
