@@ -811,7 +811,7 @@ hypre_StructAssumedPartitionCreate(
 
    /* Initially divide the bounding box */
 
-   if (!hypre_BoxVolume(bounding_box) && global_num_boxes)
+   if (hypre_doubleBoxVolume(bounding_box) < 1 && global_num_boxes)
    {
       hypre_error_w_msg(HYPRE_ERROR_GENERIC,
                         "Bounding box has zero volume AND there are grid boxes");
@@ -969,7 +969,7 @@ hypre_StructAssumedPartitionCreate(
    {
       hypre_ForBoxI(i, region_array)
       {
-         if (hypre_BoxVolume(hypre_BoxArrayBox(region_array, i)) == 0)
+         if (hypre_doubleBoxVolume(hypre_BoxArrayBox(region_array, i)) < 1)
          {
             hypre_error(HYPRE_ERROR_GENERIC);
             hypre_error_w_msg(
