@@ -328,7 +328,9 @@ if (HYPRE_WITH_CUDA)
     endif ()
     message(STATUS "Using CUDA architecture: ${HYPRE_CUDA_SM}")
 
-    add_compile_options("$<$<COMPILE_LANGUAGE:CUDA>:-expt-extended-lambda>")
+    if(CMAKE_CUDA_COMPILER_ID STREQUAL "NVIDIA")
+      add_compile_options("$<$<COMPILE_LANGUAGE:CUDA>:-expt-extended-lambda>")
+    endif()
 
     set(HYPRE_USING_HOST_MEMORY OFF CACHE BOOL "" FORCE)
 
